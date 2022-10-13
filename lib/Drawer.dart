@@ -1,0 +1,203 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'ContactPage.dart';
+import 'LogoutPage.dart';
+import 'SettingsPage.dart';
+import 'SharePage.dart';
+import 'TnC_Page.dart';
+
+class Mydrawer extends StatefulWidget {
+  const Mydrawer({Key? key}) : super(key: key);
+
+  @override
+  State<Mydrawer> createState() => _MydrawerState();
+}
+
+class _MydrawerState extends State<Mydrawer> {
+  @override
+  Widget build(BuildContext context) {
+    return   Drawer(
+      backgroundColor: Colors.black,
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+            decoration: BoxDecoration(color: Colors.white),
+            accountName: Text(
+              "MHD Mahmud Anik",
+              style: TextStyle(color: Colors.black),
+            ),
+            accountEmail: Text("anik11556@gmail.com",
+                style: TextStyle(color: Colors.black)),
+            currentAccountPicture: CircleAvatar(
+              backgroundColor: Colors.black,
+              child: Text(
+                "M",
+                style: TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.black,
+                    backgroundColor: Colors.grey),
+              ),
+            ),
+          ),
+
+
+          ListTile(
+            leading: Icon(Icons.settings, color: Colors.white),
+            title:
+            Text("Settings", style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>SettingsPage()));
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.share,
+              color: Colors.white,
+            ),
+            title: Text(
+              "Share",
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>SharePage()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.contacts, color: Colors.white),
+            title:
+            Text("Contact Us", style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>ContactPage()));
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.flag_rounded,
+              color: Colors.white,
+            ),
+            title: Text(
+              "Terms & Condition",
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>TnC_Page()));
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            title: Text(
+              "Logout",
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  LogoutPage())
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+
+    /*  Drawer(
+      backgroundColor: Colors.black,
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+            decoration: BoxDecoration(color: Colors.white),
+            accountName: Text(
+              "MHD Mahmud Anik",
+              style: TextStyle(color: Colors.black),
+            ),
+            accountEmail: Text("anik11556@gmail.com",
+                style: TextStyle(color: Colors.black)),
+            currentAccountPicture: CircleAvatar(
+              backgroundColor: Colors.black,
+              child: Text(
+                "M",
+                style: TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.black,
+                    backgroundColor: Colors.grey),
+              ),
+            ),
+          ),
+/*
+                ListTile(
+
+                  leading: Icon(Icons.home,color: Colors.white,),
+                  title: Text("Home",style: TextStyle(color: Colors.white),),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                */
+
+          ListTile(
+            leading: Icon(Icons.settings, color: Colors.white),
+            title:
+            Text("Settings", style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.share,
+              color: Colors.white,
+            ),
+            title: Text(
+              "Share",
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.contacts, color: Colors.white),
+            title:
+            Text("Contact Us", style: TextStyle(color: Colors.white)),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.flag_rounded,
+              color: Colors.white,
+            ),
+            title: Text(
+              "Terms & Condition",
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            title: Text(
+              "Logout",
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+    );*/
+  }
+}
