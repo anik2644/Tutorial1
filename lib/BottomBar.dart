@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
+import 'package:untitled12/screens/chats/chats_screen.dart';
 
 import 'ChatPage.dart';
 import 'HistoryPage.dart';
@@ -31,7 +33,7 @@ class _Bottom1State extends State<Bottom1> {
 
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  ChatPage()),
+                MaterialPageRoute(builder: (context) =>  ChatsScreen(),),
               );
             },
           ),
@@ -73,7 +75,7 @@ class _Bottom1State extends State<Bottom1> {
 
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => GoogleSignInApp()),//AccountPage()),
+                MaterialPageRoute(builder: (context) =>  AuthService().handleAuthState()),//AccountPage()),
               );
             },
           ),

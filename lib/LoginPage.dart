@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:untitled12/home_page.dart';
 import 'AuthService.dart';
 
 
@@ -25,15 +26,22 @@ class _GoogleSignInAppState extends State<GoogleSignInApp> {
     GoogleSignInAccount? user =_googleSignIn.currentUser;
 
     return MaterialApp(
+
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-
-          title: const Text("Google Sign In (Signed" ),//+ (user==null ? "out" : 'in')  + ")"),,
+           backgroundColor: Colors.black,
+          title: Center(child: const Text("Use Google Account to Sign In" , style: TextStyle(), )),//+ (user==null ? "out" : 'in')  + ")"),,
         ),
         body: Center(
             child: Column(
               children: [
-                ElevatedButton(child: Text("Sign In"),onPressed: user !=null ? null :  () async {
+
+                Container(
+                  height: 100,
+                  width: 200,
+                ),
+                ElevatedButton(child: Text("Sign In"),onPressed:user !=null ? null : () async {// user !=null ? null :
 
                   final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
                   final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
@@ -48,13 +56,21 @@ class _GoogleSignInAppState extends State<GoogleSignInApp> {
                   setState((){
 
                     print("sign in done\n\n\n");
+                   // print(user!.email);
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AuthService().handleAuthState()),//AccountPage()),
+                    );
+
+                   // Navigator.of(context).pop();
+                  }
 
 
-
-
-                  });
+                  );
 
                 },),
+
                 ElevatedButton(child: Text("Sign Out"),onPressed: user == null ? null :   () async {
 
                   await _googleSignIn.signOut();
@@ -65,8 +81,8 @@ class _GoogleSignInAppState extends State<GoogleSignInApp> {
                     print("sign out done\n\n\n");
 
                   });
-
                 },),
+
               ],
             )),
       ),
@@ -76,7 +92,7 @@ class _GoogleSignInAppState extends State<GoogleSignInApp> {
 
 
 
-
+/*
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -120,4 +136,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
+*/

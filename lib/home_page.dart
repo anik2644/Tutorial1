@@ -2,8 +2,11 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:untitled12/LoginPage.dart';
 
 import 'AuthService.dart';
+import 'main.dart';
 
 //import 'AuthService.dart';
 
@@ -13,7 +16,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //String? user = FirebaseAuth.instance.currentUser!.email ?? FirebaseAuth.instance.currentUser!.displayName;
+
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  String? Profilepicurl= FirebaseAuth.instance.currentUser!.photoURL;
+
+  String name =   FirebaseAuth.instance.currentUser!.displayName!;
+  String email =   FirebaseAuth.instance.currentUser!.email!;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,16 +55,40 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 30,
             ),
+
+
+            Image.network(Profilepicurl.toString(), height: 100, width: 100),
+
+
+            MaterialButton(padding: const EdgeInsets.all(10), color: Colors.green, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)), child: const Text('LOG OUT', style: TextStyle(color: Colors.white, fontSize: 15),),
+              onPressed: () async {
+
+
+                AuthService.name= "nothing";
+                AuthService.email= "nothing";
+                await _googleSignIn.signOut();
+                FirebaseAuth.instance.signOut();
+
+               // AuthService().signOut();
+              },
+            ),
             MaterialButton(
               padding: const EdgeInsets.all(10),
               color: Colors.green,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-              child: const Text(
-                'LOG OUT',
-                style: TextStyle(color: Colors.white, fontSize: 15),
+              child: const Text('Back', style: TextStyle(color: Colors.white, fontSize: 15),
               ),
               onPressed: () {
-                AuthService().signOut();
+
+                AuthService.name= this.name;
+                AuthService.email=this.email;
+                AuthService.Profilepicurl= this.Profilepicurl;
+                Navigator.of(context).pop();
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Myapp()),//AccountPage()),
+                );
               },
             ),
           ],

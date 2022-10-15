@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
+import 'package:untitled12/screens/chats/chats_screen.dart';
 
 import 'ContactPage.dart';
 import 'LogoutPage.dart';
@@ -15,6 +17,8 @@ class Mydrawer extends StatefulWidget {
 }
 
 class _MydrawerState extends State<Mydrawer> {
+
+
   @override
   Widget build(BuildContext context) {
     return   Drawer(
@@ -25,33 +29,34 @@ class _MydrawerState extends State<Mydrawer> {
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(color: Colors.white),
             accountName: Text(
-              "MHD Mahmud Anik",
+              AuthService.name,
               style: TextStyle(color: Colors.black),
             ),
-            accountEmail: Text("anik11556@gmail.com",
+            accountEmail: Text(AuthService.email,
                 style: TextStyle(color: Colors.black)),
             currentAccountPicture: CircleAvatar(
-              backgroundColor: Colors.black,
-              child: Text(
-                "M",
-                style: TextStyle(
-                    fontSize: 40.0,
-                    color: Colors.black,
-                    backgroundColor: Colors.grey),
-              ),
+             // backgroundColor: Colors.black,
+               child:  Image.network(AuthService.Profilepicurl.toString(), height: 100, width: 100, ),
+               //Text(
+              //   "M",
+              //   style: TextStyle(
+              //       fontSize: 40.0,
+              //       color: Colors.black,
+              //       backgroundColor: Colors.grey),
+              // ),
             ),
           ),
 
 
-          ListTile(
+         /* ListTile(
             leading: Icon(Icons.settings, color: Colors.white),
             title:
             Text("Settings", style: TextStyle(color: Colors.white)),
             onTap: () {
               Navigator.push(context,MaterialPageRoute(builder: (context) =>SettingsPage()));
             },
-          ),
-          ListTile(
+          ),  */
+         /* ListTile(
             leading: Icon(
               Icons.share,
               color: Colors.white,
@@ -63,13 +68,13 @@ class _MydrawerState extends State<Mydrawer> {
             onTap: () {
               Navigator.push(context,MaterialPageRoute(builder: (context) =>SharePage()));
             },
-          ),
+          ),  */
           ListTile(
             leading: Icon(Icons.contacts, color: Colors.white),
             title:
             Text("Contact Us", style: TextStyle(color: Colors.white)),
             onTap: () {
-              Navigator.push(context,MaterialPageRoute(builder: (context) =>ContactPage()));
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>ChatsScreen(),));
             },
           ),
           ListTile(
