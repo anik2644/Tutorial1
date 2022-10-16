@@ -58,6 +58,11 @@ class _GoogleSignInAppState extends State<GoogleSignInApp> {
                     print("sign in done\n\n\n");
                    // print(user!.email);
 
+                     AuthService.is_login =true;
+                     AuthService.name =   FirebaseAuth.instance.currentUser!.displayName!;
+                     AuthService.email =   FirebaseAuth.instance.currentUser!.email!;
+
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => AuthService().handleAuthState()),//AccountPage()),

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'det2.dart';
+
 class Mybody extends StatefulWidget {
   const Mybody({Key? key}) : super(key: key);
 
@@ -10,19 +12,43 @@ class Mybody extends StatefulWidget {
 
 class _MybodyState extends State<Mybody> {
 
-  Container MyArticles(String imageVal, String hotelname, String hotellocation) {
-    return Container(
-      width: 160.0,
-      child: Card(
-        child: Wrap(
-          children: <Widget>[
-            Image.network(imageVal),
-            ListTile(
-              title: Text(hotelname),
-              subtitle: Text(hotellocation),
-            ),
-          ],
+  GestureDetector MyArticles(String imageVal, String hotelname, String hotellocation) {
+    return GestureDetector(
+
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => det2()));
+
+      },
+
+      child: Container(
+
+
+        width: 160.0,
+        child: Card(
+          child: Wrap(
+            children: <Widget>[
+              Image.network(imageVal),
+              ListTile(
+                title: Text(hotelname),
+                subtitle: Text(hotellocation),
+              ),
+            ],
+          ),
         ),
+
+         /* child: InkWell(
+            onTap: () {}, // Handle your callback
+            child: Ink(height: 100, width: 100, color: Colors.blue),
+          ),
+
+          child: GestureDetector(
+            onTap: () {
+              print("Click event on Container");
+            },
+            child: Container(.......),*/
+         // )
+
       ),
     );
   }

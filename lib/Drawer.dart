@@ -19,6 +19,7 @@ class Mydrawer extends StatefulWidget {
 class _MydrawerState extends State<Mydrawer> {
 
 
+
   @override
   Widget build(BuildContext context) {
     return   Drawer(
@@ -26,7 +27,7 @@ class _MydrawerState extends State<Mydrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          UserAccountsDrawerHeader(
+          AuthService.is_login ?  UserAccountsDrawerHeader(
             decoration: BoxDecoration(color: Colors.white),
             accountName: Text(
               AuthService.name,
@@ -37,13 +38,50 @@ class _MydrawerState extends State<Mydrawer> {
             currentAccountPicture: CircleAvatar(
              // backgroundColor: Colors.black,
                child:  Image.network(AuthService.Profilepicurl.toString(), height: 100, width: 100, ),
-               //Text(
-              //   "M",
-              //   style: TextStyle(
-              //       fontSize: 40.0,
-              //       color: Colors.black,
-              //       backgroundColor: Colors.grey),
-              // ),
+            ),
+          ):  DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.01,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Column(
+                        children: [
+                          Container(child: Text(' ')),
+                          Container(child: Text(' ')),
+                          Container(),
+
+                          Center(
+                            child: FlatButton(
+
+                              color:Colors.green,
+                              child:Container(child: Text('Login')),
+                              onPressed: (){setState(() {
+
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) =>  AuthService().handleAuthState()),//AccountPage()),
+                                );
+
+                                AuthService.is_login=true;
+                              });}, ),
+                          )
+                        ],
+                      ),
+
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
 
@@ -69,6 +107,8 @@ class _MydrawerState extends State<Mydrawer> {
               Navigator.push(context,MaterialPageRoute(builder: (context) =>SharePage()));
             },
           ),  */
+
+
           ListTile(
             leading: Icon(Icons.contacts, color: Colors.white),
             title:
@@ -100,10 +140,17 @@ class _MydrawerState extends State<Mydrawer> {
               style: TextStyle(color: Colors.white),
             ),
             onTap: () {
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AuthService().handleAuthState()),//AccountPage()),
+              );
+              /*
               Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) =>  LogoutPage())
               );
+               */
             },
           ),
         ],

@@ -11,9 +11,20 @@ import 'home_page.dart';
 
 class AuthService{
 
- static String? Profilepicurl= "https://cdn-icons-png.flaticon.com/512/1250/1250689.png";// FirebaseAuth.instance.currentUser!.photoURL;
- static String name =  "nothing";// FirebaseAuth.instance.currentUser!.displayName!;
- static String email =  "notj=hing";// FirebaseAuth.instance.currentUser!.email!;
+
+  static String x=  FirebaseAuth.instance.currentUser!.displayName!;
+  static String y=  FirebaseAuth.instance.currentUser!.email!;
+  static String z= FirebaseAuth.instance.currentUser!.photoURL!;
+
+
+ static String? Profilepicurl= "https://commons.wikimedia.org/wiki/File:A_black_image.jpg" ; //z.isNotEmpty? z: "https://commons.wikimedia.org/wiki/File:A_black_image.jpg" ;
+ static String name = "nothing"; //x.isNotEmpty? x:"nothing";
+ static String email = "nothing"; //y.isNotEmpty? y: "nothing";// FirebaseAuth.instance.currentUser!.email!;
+ static bool is_login=  name== "nothing" ? false : true;  //false;
+
+
+
+
 
   AuthService()
   {

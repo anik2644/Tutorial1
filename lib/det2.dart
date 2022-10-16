@@ -91,7 +91,7 @@ class _det2State extends State<det2> {
               ), //Siz
               Text(widget.description),
               
-              ToggleButtons(children: children, isSelected: isSelected)
+              //ToggleButtons(children: children, isSelected: isSelected)
 
               ],
           ),

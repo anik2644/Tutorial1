@@ -66,6 +66,8 @@ class _HomePageState extends State<HomePage> {
 
                 AuthService.name= "nothing";
                 AuthService.email= "nothing";
+                AuthService.Profilepicurl= "https://commons.wikimedia.org/wiki/File:A_black_image.jpg";
+                AuthService.is_login= false;
                 await _googleSignIn.signOut();
                 FirebaseAuth.instance.signOut();
 
@@ -83,6 +85,12 @@ class _HomePageState extends State<HomePage> {
                 AuthService.name= this.name;
                 AuthService.email=this.email;
                 AuthService.Profilepicurl= this.Profilepicurl;
+                AuthService.is_login= true;
+
+                AuthService.name =  FirebaseAuth.instance.currentUser!.displayName!;
+                AuthService.email=  FirebaseAuth.instance.currentUser!.email!;
+                AuthService.Profilepicurl  = FirebaseAuth.instance.currentUser!.photoURL!;
+
                 Navigator.of(context).pop();
 
                 Navigator.push(
