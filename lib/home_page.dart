@@ -1,14 +1,9 @@
-//import 'dart:html';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:untitled12/LoginPage.dart';
-
 import 'AuthService.dart';
 import 'main.dart';
-
-//import 'AuthService.dart';
 
 class HomePage extends StatefulWidget {
   @override

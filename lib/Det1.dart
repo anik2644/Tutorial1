@@ -17,10 +17,10 @@ class _det2State extends State<det2> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(widget.name,
-            style: const TextStyle(
-            fontSize: 24,
-            color: Colors.black,
-            fontWeight: FontWeight.w600),),
+          style: const TextStyle(
+              fontSize: 24,
+              color: Colors.black,
+              fontWeight: FontWeight.w600),),
 
       ),
       body: SafeArea(
@@ -28,7 +28,7 @@ class _det2State extends State<det2> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-               Image.network(
+              Image.network(
                 "https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg",
                 fit: BoxFit.cover,
               ),
@@ -90,10 +90,11 @@ class _det2State extends State<det2> {
                 ), //Card
               ), //Siz
               Text(widget.description),
-              ElevatedButtonWidget(),
-              //ToggleButtons(children: children, isSelected: isSelected)
 
-              ],
+              ElevatedButtonWidget()
+
+
+            ],
           ),
         ),
       ),
@@ -115,7 +116,6 @@ class MyBullet extends StatelessWidget{
     );
   }
 }
-
 class ElevatedButtonExample extends StatelessWidget {
   const ElevatedButtonExample({Key? key}) : super(key: key);
 
