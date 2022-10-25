@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled12/AuthService.dart';
 import 'package:untitled12/screens/chats/chats_screen.dart';
+import 'package:untitled12/screens/messages/message_screen.dart';
 
 import 'ContactPage.dart';
 import 'LogoutPage.dart';
 import 'SettingsPage.dart';
 import 'SharePage.dart';
-import 'TnC_Page.dart';
+import 'screens/TnC_Page.dart';
 
 class Mydrawer extends StatefulWidget {
   const Mydrawer({Key? key}) : super(key: key);
@@ -28,6 +29,7 @@ class _MydrawerState extends State<Mydrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           AuthService.is_login ?  UserAccountsDrawerHeader(
+
             decoration: BoxDecoration(color: Colors.white),
             accountName: Text(
               AuthService.name,
@@ -114,7 +116,7 @@ class _MydrawerState extends State<Mydrawer> {
             title:
             Text("Contact Us", style: TextStyle(color: Colors.white)),
             onTap: () {
-              Navigator.push(context,MaterialPageRoute(builder: (context) =>ChatsScreen(),));
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>MessagesScreen(),));
             },
           ),
           ListTile(

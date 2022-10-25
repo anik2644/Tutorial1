@@ -2,20 +2,31 @@ enum ChatMessageType { text, audio, image, video }
 enum MessageStatus { not_sent, not_view, viewed }
 
 class ChatMessage {
-  final String text;
-  final ChatMessageType messageType;
-  final MessageStatus messageStatus;
-  final bool isSender;
+/*
 
-  ChatMessage({
-    this.text = '',
-    required this.messageType,
-    required this.messageStatus,
-    required this.isSender,
-  });
+*/
+
+  String text;
+  ChatMessageType messageType;
+  MessageStatus messageStatus ;
+  bool isSender;
+
+  ChatMessage(this.text,this.messageType,this.messageStatus,this.isSender);
+  /*
+  ChatMessage(String text,ChatMessageType messageType,MessageStatus messageStatus,bool isSender)
+  {
+  this.text = text;
+  this.messageType= messageType;
+  this.messageStatus= messageStatus;
+  this.isSender = isSender;
+ }
+
+   */
 }
 
+
 List demeChatMessages = [
+  /*
   ChatMessage(
     text: "Hi Sajol,",
     messageType: ChatMessageType.text,
@@ -58,4 +69,6 @@ List demeChatMessages = [
     messageStatus: MessageStatus.not_view,
     isSender: true,
   ),
+
+   */
 ];

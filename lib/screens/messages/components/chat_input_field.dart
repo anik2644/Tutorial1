@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
 
 import '../../../constants.dart';
 
@@ -9,6 +11,7 @@ class ChatInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var message_type_box_controller = new TextEditingController();
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: kDefaultPadding,
@@ -28,7 +31,7 @@ class ChatInputField extends StatelessWidget {
         child: Row(
           children: [
             Icon(Icons.mic, color: kPrimaryColor),
-            SizedBox(width: kDefaultPadding),
+            const SizedBox(width: kDefaultPadding),
             Expanded(
               child: Container(
                 padding: EdgeInsets.symmetric(
@@ -40,7 +43,6 @@ class ChatInputField extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-
                     Icon(
                       Icons.sentiment_satisfied_alt_outlined,
                       color: Theme.of(context)
@@ -56,10 +58,12 @@ class ChatInputField extends StatelessWidget {
                           hintText: "Type message",
                           border: InputBorder.none,
                         ),
+                        controller: message_type_box_controller =
+                            new TextEditingController(),
                       ),
                     ),
 
-                   /*
+                    /*
                     Icon(
                       Icons.attach_file,
                       color: Theme.of(context)
@@ -78,11 +82,64 @@ class ChatInputField extends StatelessWidget {
                           .withOpacity(0.64),
                     ),
                     */
-                    IconButton(onPressed:  (){}, icon: Icon(Icons.send))
+                    IconButton(
+                        onPressed: () async {
+
+                        //  print(message_type_box_controller.text);
+
+
+                            final friendUid = "admin";
+                            final currentUserId = AuthService.email;
+                            var chatDocId;
+                            CollectionReference chats = FirebaseFirestore.instance.collection('adminchats');
+                            if (message_type_box_controller.text== '') return;
+
+                            await chats
+                                .where('users', isEqualTo: {
+                                  friendUid.toString(): null,
+                                  currentUserId.toString(): null
+                                })
+                                .limit(1)
+                                .get()
+                                .then(
+                                  (QuerySnapshot querySnapshot) async {
+                                    if (querySnapshot.docs.isNotEmpty) {
+                                      //  rreaddata();
+                                      chatDocId = querySnapshot.docs.single.id;
+                                      print(chatDocId);
+                                      //print("dound man");
+                                    } else {
+                                      await chats.add({
+                                        'users': {
+                                          friendUid.toString(): null,
+                                          currentUserId.toString(): null
+                                        },
+                                      }).then((value) => {
+                                        chatDocId = value});
+                                     //   print("Arrogant");
+                                    }
+                                  },
+                                )
+                                .catchError((error) {});
+
+                            chats.doc(chatDocId.toString()).collection('messages').add({
+                              'createdOn': FieldValue.serverTimestamp(),
+                              'uid':  currentUserId.toString(),
+                              'friendName': "admin" ,
+                              'msg': message_type_box_controller.text
+                            }).then((value) {
+                              //_textController.text = '';
+                            });
+
+
+
+                         // print("message sent done");
+                          message_type_box_controller.text = "";
+                        },
+                        icon: Icon(Icons.send))
                   ],
                 ),
               ),
-
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
 
 import '../../constants.dart';
 import 'components/body.dart';
@@ -19,14 +20,15 @@ class MessagesScreen extends StatelessWidget {
         children: [
           BackButton(),
           CircleAvatar(
-            backgroundImage: AssetImage("assets/images/user_2.png"),
+            child: Image.network(AuthService.adminProfilepicurl.toString(),),
+
           ),
           SizedBox(width: kDefaultPadding * 0.75),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Kristin Watson",
+                AuthService.name,
                 style: TextStyle(fontSize: 16),
               ),
               Text(
@@ -44,7 +46,11 @@ class MessagesScreen extends StatelessWidget {
         ),
         IconButton(
           icon: Icon(Icons.videocam),
-          onPressed: () {},
+          onPressed: () {
+            print(AuthService.Profilepicurl.toString());
+
+
+          },
         ),
         SizedBox(width: kDefaultPadding / 2),
       ],
