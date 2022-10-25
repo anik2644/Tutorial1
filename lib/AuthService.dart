@@ -33,7 +33,7 @@ class AuthService{
 
   static var chatdocid;
   static var friendUid= "admin";
-  static var currentUserId= AuthService.email;
+  static var currentUserId;//= AuthService.email;
 
 
 
@@ -51,11 +51,18 @@ class AuthService{
             
             print("i have been come");
 
-            currentUserId=  AuthService.email;
+
+            AuthService.is_login =true;
+            AuthService.name =   FirebaseAuth.instance.currentUser!.displayName!;
+            AuthService.email =   FirebaseAuth.instance.currentUser!.email!;
+
+            AuthService.currentUserId= AuthService.email;
+           // currentUserId=  AuthService.email;
             // FetchMEssage();
 
             return HomePage();
           } else {
+            AuthService.currentUserId= AuthService.email;
             print("It is really beautiful");
             return const  GoogleSignInApp();  //LoginPage();
           }
@@ -73,7 +80,7 @@ class AuthService{
         print(result.data());
         FirebaseFirestore.instance.collection("adminchats")
             .doc(chatdocid)
-            .collection("messages").orderBy('createdOn', descending: true)
+            .collection("messages").orderBy('createdOn',  descending: false)
             .get()
             .then((subcol) =>
         {

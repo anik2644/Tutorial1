@@ -59,7 +59,7 @@ class Body extends StatelessWidget {
 
      //AuthService.ddemeChatMessages.add(ChatMessage( "He is fine" ,ChatMessageType.text,MessageStatus.viewed,true ));
      print("this is body");
-     AuthService.ddemeChatMessages.clear();
+     //AuthService.ddemeChatMessages.clear();
     AuthService.FetchMEssage();
 
 /*
