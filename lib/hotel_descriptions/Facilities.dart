@@ -246,31 +246,58 @@ Widget titleSection = Container(
   ),
 );
 
-Widget buttonSection = Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    IconButton(
-      icon: Icon(
-        color: Colors.blue,
-        Icons.call,
+Widget buttonSection = Card(
+  child:   Row(
+
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+    children: [
+
+      IconButton(
+
+        icon: Icon(
+
+          color: Colors.blue,
+
+          Icons.call,
+
+        ),
+
+        onPressed: () {},
+
       ),
-      onPressed: () {},
-    ),
-    IconButton(
-      icon: Icon(
-        color: Colors.blue,
-        Icons.near_me,
+
+      IconButton(
+
+        icon: Icon(
+
+          color: Colors.blue,
+
+          Icons.near_me,
+
+        ),
+
+        onPressed: () {},
+
       ),
-      onPressed: () {},
-    ),
-    IconButton(
-      icon: Icon(
-        color: Colors.blue,
-        Icons.share,
+
+      IconButton(
+
+        icon: Icon(
+
+          color: Colors.blue,
+
+          Icons.share,
+
+        ),
+
+        onPressed: () {},
+
       ),
-      onPressed: () {},
-    ),
-  ],
+
+    ],
+
+  ),
 );
 
 Future<void> _launchURL(String url) async {

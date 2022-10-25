@@ -124,7 +124,6 @@ class _hotel_descriptionState extends State<hotel_description> {
               height: 5,
             ),
             //ListView.builder(itemBuilder: itemBuilder),
-            buttonSection,
             SingleChildScrollView(
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 20.0),
@@ -132,6 +131,7 @@ class _hotel_descriptionState extends State<hotel_description> {
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   children: <Widget>[
+                    buttonSection,
                     Popular_facilities(),
                     description(),
                     SizedBox(
