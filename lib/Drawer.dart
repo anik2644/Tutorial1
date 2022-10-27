@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled12/AuthService.dart';
+import 'package:untitled12/hotel_descriptions/TnC.dart';
 import 'package:untitled12/screens/chats/chats_screen.dart';
 
 import 'ContactPage.dart';
 import 'LogoutPage.dart';
 import 'SettingsPage.dart';
 import 'SharePage.dart';
-import 'TnC_Page.dart';
+import 'hotel_descriptions/TnC_Page.dart';
 
 class Mydrawer extends StatefulWidget {
   const Mydrawer({Key? key}) : super(key: key);
@@ -129,7 +130,7 @@ class _MydrawerState extends State<Mydrawer> {
               style: TextStyle(color: Colors.white),
             ),
             onTap: () {
-              Navigator.push(context,MaterialPageRoute(builder: (context) =>TnC_Page()));
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>hotel_description()));
             },
           ),
           ListTile(

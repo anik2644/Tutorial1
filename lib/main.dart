@@ -22,7 +22,6 @@ class FunctioN extends StatefulWidget {
 
 class _FunctioNState extends State<FunctioN> {
 
-
   get drawer => null;
 
   @override
@@ -48,7 +47,6 @@ class _MyappState extends State<Myapp> {
       child: Scaffold(
 
         body:  Mybody(),
-
 
         drawer: Mydrawer(),
 

@@ -4,6 +4,13 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'descriptions.dart';
 
+Widget TnC_logo = Card(
+  child: Wrap(
+    children: [
+      Image.network("https://1touchmangaluru.com/assets/images/tac2.png"),
+    ],
+  ),
+) ;
 
 GestureDetector MyArticles(String hotelname, String hotellocation) {
   return GestureDetector(
