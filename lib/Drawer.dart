@@ -79,11 +79,8 @@ class _MydrawerState extends State<Mydrawer> {
                           Container(),
 
                           Center(
-/*
-                          <<<<<<< HEAD
-=======
-                            /*
->>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
+
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
                             child: FlatButton(
 
                               color:Colors.green,
@@ -97,12 +94,8 @@ class _MydrawerState extends State<Mydrawer> {
 
                                 AuthService.is_login=true;
                               });}, ),
-<<<<<<< HEAD
-=======
-                            */
->>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
 
-                          */
+
                           )
                         ],
                       ),

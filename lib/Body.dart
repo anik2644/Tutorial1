@@ -133,7 +133,7 @@ class _MybodyState extends State<Mybody> {
 //<<<<<<< HEAD
 
 //=======
-                    SizedBox(height: 95,)
+                   // SizedBox(height: 95,)
                   ],
                 ),
 

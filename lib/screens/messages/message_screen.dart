@@ -1,6 +1,8 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled12/AuthService.dart';
+import 'package:untitled12/main.dart';
 
 import '../../constants.dart';
 import '../../models/ChatMessage.dart';
@@ -17,7 +19,16 @@ class MessagesScreen extends StatelessWidget {
 
   AppBar buildAppBar() {
     return AppBar(
+     /* leading: BackButton(
+        onPressed: (){
+          AuthService.ddemeChatMessages.clear();
+          AuthService.FetchMEssage();
+         // Navigator.push(context,MaterialPageRoute(builder: (context) =>FunctioN()));
+
+        },
+      ),*/
       automaticallyImplyLeading: false,
+
       title: Row(
         children: [
           BackButton(),
@@ -105,6 +116,7 @@ class MessagesScreen extends StatelessWidget {
         ),
         SizedBox(width: kDefaultPadding / 2),
       ],
+
     );
   }
 }
