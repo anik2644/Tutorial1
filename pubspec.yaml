@@ -21,6 +21,12 @@ dependencies:
   google_fonts: ^2.0.0
   google_sign_in: ^5.4.1
   firebase_storage: ^11.0.2
+  url_launcher: ^6.1.6
+  flutter_custom_clippers: ^2.0.0
+  favorite_button: ^0.0.4
+  auto_size_text: ^3.0.0
+  carousel_slider: ^4.1.1
+
 
 
 
@@ -37,4 +43,3 @@ flutter:
     - assets/appstore.png
     - assets/images/
     - assets/icons/
-

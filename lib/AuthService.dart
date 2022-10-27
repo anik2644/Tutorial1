@@ -1,13 +1,19 @@
 //Determine if the user is authenticated.
 
+//<<<<<<< HEAD
 import 'package:cloud_firestore/cloud_firestore.dart';
+//=======
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'LoginPage.dart';
 import 'home_page.dart';
+//<<<<<<< HEAD
 import 'models/ChatMessage.dart';
+//=======
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
 
 
 
@@ -19,13 +25,18 @@ class AuthService{
   static String z= FirebaseAuth.instance.currentUser!.photoURL!;
 
 
+//<<<<<<< HEAD
  static String? Profilepicurl= "https://upload.wikimedia.org/wikipedia/commons/4/49/A_black_image.jpg" ;
+//=======
+ //static String? Profilepicurl= "https://commons.wikimedia.org/wiki/File:A_black_image.jpg" ; //z.isNotEmpty? z: "https://commons.wikimedia.org/wiki/File:A_black_image.jpg" ;
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
  static String name = "nothing"; //x.isNotEmpty? x:"nothing";
  static String email = "nothing"; //y.isNotEmpty? y: "nothing";// FirebaseAuth.instance.currentUser!.email!;
  static bool is_login=  name== "nothing" ? false : true;  //false;
 
 
 
+//<<<<<<< HEAD
   static String? adminProfilepicurl= "https://lh3.googleusercontent.com/a/ALm5wu1Nx5jn2mTV8M1M157ym8VCUglZacHP9ECEt4gInA=s96-c" ;
   static String? friendProfilepicurl= "https://lh3.googleusercontent.com/a/ALm5wu1Nx5jn2mTV8M1M157ym8VCUglZacHP9ECEt4gInA=s96-c" ;
 
@@ -35,6 +46,8 @@ class AuthService{
   static var friendUid= "admin";
   static var currentUserId;//= AuthService.email;
 
+//=======
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
 
 
   AuthService()
@@ -43,9 +56,38 @@ class AuthService{
   }
 
 
+  handleAuthState() {
+    return StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (BuildContext context, snapshot)  {
+          if (snapshot.hasData) {
+
+            print("i have been come");
+
+
+            AuthService.is_login =true;
+            AuthService.name =   FirebaseAuth.instance.currentUser!.displayName!;
+            AuthService.email =   FirebaseAuth.instance.currentUser!.email!;
+
+            AuthService.currentUserId= AuthService.email;
+            // currentUserId=  AuthService.email;
+            // FetchMEssage();
+
+            return HomePage();
+          } else {
+            AuthService.currentUserId= AuthService.email;
+            print("It is really beautiful");
+            return const  GoogleSignInApp();  //LoginPage();
+          }
+        });
+  }
+
+
+/*
  handleAuthState() {
     return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
+//<<<<<<< HEAD
         builder: (BuildContext context, snapshot)  {
           if (snapshot.hasData) {
             
@@ -61,15 +103,28 @@ class AuthService{
             // FetchMEssage();
 
             return HomePage();
-          } else {
+          }
+          else {
             AuthService.currentUserId= AuthService.email;
+//=======
+            builder: (BuildContext context, snapshot) {
+          if (snapshot.hasData) {
+            
+            print("i have been come");
+            return HomePage();
+          } else {
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
             print("It is really beautiful");
             return const  GoogleSignInApp();  //LoginPage();
           }
-        });
+
   }
+          }
 
-
+    );
+  }
+*/
+//<<<<<<< HEAD
   static FetchMEssage() async {
 
     print("this is fetch ");
@@ -106,6 +161,8 @@ class AuthService{
     });
   }
 
+//=======
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
 
 
 /*

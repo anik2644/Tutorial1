@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'det2.dart';
+import 'package:untitled12/hotel_descriptions/hotel_description.dart';
+
+import 'Details_page.dart';
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
 
 class Mybody extends StatefulWidget {
   const Mybody({Key? key}) : super(key: key);
@@ -17,7 +20,8 @@ class _MybodyState extends State<Mybody> {
 
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => det2()));
+            context, MaterialPageRoute(builder: (context) => hotel_description()));
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
 
       },
 
@@ -100,6 +104,13 @@ class _MybodyState extends State<Mybody> {
                   scrollDirection: Axis.vertical,
                   children: <Widget>[
                     MyArticles(
+//<<<<<<< HEAD
+//=======
+                        "https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg",
+                        "Hotel Sea Crown",
+                        "Coxs Bazaar, Bangladesh"),
+                    MyArticles(
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
                         "https://media.istockphoto.com/photos/luxury-resort-picture-id104731717?k=20&m=104731717&s=612x612&w=0&h=40INtJRzhmU1O4Rj24zdY8vj4aGsWpPaEfojaVQ8xBo=",
                         "Hotel Grand Mahal",
                         "Srinagar,India"),
@@ -119,8 +130,14 @@ class _MybodyState extends State<Mybody> {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTjGpks3M8iiSaW-NvwJll2LTZQEkyfAj8OUV5_Jjs32LlQHCC2HbBfGBntZgMcfRRzDc&usqp=CAU",
                         "Hotel Radisson",
                         "Bangladesh"),
+//<<<<<<< HEAD
+
+//=======
+                    SizedBox(height: 95,)
                   ],
                 ),
+
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
               ),
             ],
           ),

@@ -59,7 +59,7 @@ class ChatInputField extends StatelessWidget {
                           border: InputBorder.none,
                         ),
                         controller: message_type_box_controller =
-                            new TextEditingController(),
+                        new TextEditingController(),
                       ),
                     ),
 
@@ -85,58 +85,58 @@ class ChatInputField extends StatelessWidget {
                     IconButton(
                         onPressed: () async {
 
-                        //  print(message_type_box_controller.text);
+                          //  print(message_type_box_controller.text);
 
-                            AuthService.ddemeChatMessages.clear();
-                            AuthService.FetchMEssage();
+                          AuthService.ddemeChatMessages.clear();
+                          AuthService.FetchMEssage();
 
 
-                            final friendUid = "admin";
-                            final currentUserId = AuthService.email;
-                            var chatDocId;
-                            CollectionReference chats = FirebaseFirestore.instance.collection('adminchats');
-                            if (message_type_box_controller.text== '') return;
+                          final friendUid = "admin";
+                          final currentUserId = AuthService.email;
+                          var chatDocId;
+                          CollectionReference chats = FirebaseFirestore.instance.collection('adminchats');
+                          if (message_type_box_controller.text== '') return;
 
-                            await chats
-                                .where('users', isEqualTo: {
-                                  friendUid.toString(): null,
-                                  currentUserId.toString(): null
-                                })
-                                .limit(1)
-                                .get()
-                                .then(
-                                  (QuerySnapshot querySnapshot) async {
-                                    if (querySnapshot.docs.isNotEmpty) {
-                                      //  rreaddata();
-                                      chatDocId = querySnapshot.docs.single.id;
-                                      print(chatDocId);
-                                      //print("dound man");
-                                    } else {
-                                      await chats.add({
-                                        'users': {
-                                          friendUid.toString(): null,
-                                          currentUserId.toString(): null
-                                        },
-                                      }).then((value) => {
-                                        chatDocId = value});
-                                     //   print("Arrogant");
-                                    }
+                          await chats
+                              .where('users', isEqualTo: {
+                            friendUid.toString(): null,
+                            currentUserId.toString(): null
+                          })
+                              .limit(1)
+                              .get()
+                              .then(
+                                (QuerySnapshot querySnapshot) async {
+                              if (querySnapshot.docs.isNotEmpty) {
+                                //  rreaddata();
+                                chatDocId = querySnapshot.docs.single.id;
+                                print(chatDocId);
+                                //print("dound man");
+                              } else {
+                                await chats.add({
+                                  'users': {
+                                    friendUid.toString(): null,
+                                    currentUserId.toString(): null
                                   },
-                                )
-                                .catchError((error) {});
+                                }).then((value) => {
+                                  chatDocId = value});
+                                //   print("Arrogant");
+                              }
+                            },
+                          )
+                              .catchError((error) {});
 
-                            chats.doc(chatDocId.toString()).collection('messages').add({
-                              'createdOn': FieldValue.serverTimestamp(),
-                              'uid':  currentUserId.toString(),
-                              'friendName': "admin" ,
-                              'msg': message_type_box_controller.text
-                            }).then((value) {
-                              //_textController.text = '';
-                            });
+                          chats.doc(chatDocId.toString()).collection('messages').add({
+                            'createdOn': FieldValue.serverTimestamp(),
+                            'uid':  currentUserId.toString(),
+                            'friendName': "admin" ,
+                            'msg': message_type_box_controller.text
+                          }).then((value) {
+                            //_textController.text = '';
+                          });
 
 
 
-                         // print("message sent done");
+                          // print("message sent done");
                           message_type_box_controller.text = "";
                         },
                         icon: Icon(Icons.send))

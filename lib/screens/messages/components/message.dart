@@ -52,7 +52,7 @@ class Message extends StatelessWidget {
       padding: const EdgeInsets.only(top: kDefaultPadding),
       child: Row(
         mainAxisAlignment:
-            message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
+        message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
           if (!message.isSender) ...[
             CircleAvatar(

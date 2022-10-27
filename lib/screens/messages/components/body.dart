@@ -53,13 +53,13 @@ class Body extends StatelessWidget {
   //static Future<Body> create() async => Body();
 
   Body()
-   {
+  {
 
     // AuthService.ddemeChatMessages.add(ChatMessage( "anik is a good boy" ,ChatMessageType.text,MessageStatus.viewed,true ));
 
-     //AuthService.ddemeChatMessages.add(ChatMessage( "He is fine" ,ChatMessageType.text,MessageStatus.viewed,true ));
-     print("this is body");
-     //AuthService.ddemeChatMessages.clear();
+    //AuthService.ddemeChatMessages.add(ChatMessage( "He is fine" ,ChatMessageType.text,MessageStatus.viewed,true ));
+    print("this is body");
+    //AuthService.ddemeChatMessages.clear();
     AuthService.FetchMEssage();
 
 /*
@@ -74,7 +74,7 @@ class Body extends StatelessWidget {
   }
 
 
- // ChatMessage msge = new ChatMessage(messageType: ChatMessageType.text, messageStatus: MessageStatus.viewed, isSender: true);
+  // ChatMessage msge = new ChatMessage(messageType: ChatMessageType.text, messageStatus: MessageStatus.viewed, isSender: true);
 
 
   @override

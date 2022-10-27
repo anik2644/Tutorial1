@@ -12,7 +12,7 @@ class ChatMessage {
   bool isSender;
 
   ChatMessage(this.text,this.messageType,this.messageStatus,this.isSender);
-  /*
+/*
   ChatMessage(String text,ChatMessageType messageType,MessageStatus messageStatus,bool isSender)
   {
   this.text = text;

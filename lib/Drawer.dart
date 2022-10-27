@@ -1,14 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled12/AuthService.dart';
+//<<<<<<< HEAD
 import 'package:untitled12/screens/chats/chats_screen.dart';
 import 'package:untitled12/screens/messages/message_screen.dart';
+//=======
+//import 'package:untitled12/hotel_descriptions/TnC.dart';
+import 'package:untitled12/screens/chats/chats_screen.dart';
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
 
 import 'ContactPage.dart';
 import 'LogoutPage.dart';
 import 'SettingsPage.dart';
 import 'SharePage.dart';
+//<<<<<<< HEAD
+import 'hotel_descriptions/TnC.dart';
 import 'screens/TnC_Page.dart';
+//=======
+//import 'hotel_descriptions/TnC_Page.dart';
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
 
 class Mydrawer extends StatefulWidget {
   const Mydrawer({Key? key}) : super(key: key);
@@ -29,7 +39,13 @@ class _MydrawerState extends State<Mydrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           AuthService.is_login ?  UserAccountsDrawerHeader(
+          /*
+<<<<<<< HEAD
 
+=======
+>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
+
+           */
             decoration: BoxDecoration(color: Colors.white),
             accountName: Text(
               AuthService.name,
@@ -63,6 +79,11 @@ class _MydrawerState extends State<Mydrawer> {
                           Container(),
 
                           Center(
+/*
+                          <<<<<<< HEAD
+=======
+                            /*
+>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
                             child: FlatButton(
 
                               color:Colors.green,
@@ -76,6 +97,12 @@ class _MydrawerState extends State<Mydrawer> {
 
                                 AuthService.is_login=true;
                               });}, ),
+<<<<<<< HEAD
+=======
+                            */
+>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
+
+                          */
                           )
                         ],
                       ),
@@ -129,7 +156,12 @@ class _MydrawerState extends State<Mydrawer> {
               style: TextStyle(color: Colors.white),
             ),
             onTap: () {
+              /*
+<<<<<<< HEAD
               Navigator.push(context,MaterialPageRoute(builder: (context) =>TnC_Page()));
+=======  */
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>hotel_description()));
+//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
             },
           ),
           ListTile(
