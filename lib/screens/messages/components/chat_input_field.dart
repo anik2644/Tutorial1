@@ -7,7 +7,10 @@ import '../../../constants.dart';
 class ChatInputField extends StatelessWidget {
   const ChatInputField({
     Key? key,
+   // required this.indx;
   }) : super(key: key);
+
+  //final int indx;
 
   @override
   Widget build(BuildContext context) {

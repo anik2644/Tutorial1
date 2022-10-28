@@ -23,7 +23,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
           color: Colors.white,
         ),
       ),  */
-     // bottomNavigationBar: buildBottomNavigationBar(),
+     //bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
 

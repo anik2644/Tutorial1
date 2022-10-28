@@ -14,7 +14,7 @@ class ChatCard extends StatelessWidget {
   final Chat chat;
   final VoidCallback press;
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return InkWell(
       onTap: press,

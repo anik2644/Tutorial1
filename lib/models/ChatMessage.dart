@@ -24,8 +24,31 @@ class ChatMessage {
    */
 }
 
+class ChatListObject{
+
+  String sender;
+  ChatListObject(this.sender);
+  String receiver="admin";
+
+  List <ChatMessage> messageList = [
+    ChatMessage("Hi", ChatMessageType.text,MessageStatus.viewed,false,),
+    ChatMessage("Hello", ChatMessageType.text,MessageStatus.viewed,true,),
+    ChatMessage("What are you doing", ChatMessageType.text,MessageStatus.viewed,true,),
+    ChatMessage("I am Watching game", ChatMessageType.text,MessageStatus.viewed,false,),
+
+  ];
+
+}
+
 
 List demeChatMessages = [
+
+  ChatListObject("Wilson"),
+  ChatListObject("Howard"),
+  ChatListObject("Ralpha"),
+  ChatListObject("Jacob"),
+  ChatListObject("Albert"),
+  //ChatListObject("Wilson"),
   /*
   ChatMessage(
     text: "Hi Sajol,",
