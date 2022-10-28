@@ -12,53 +12,59 @@ import 'components/body.dart';
 
 class messagesScreenForAllChatMembers extends StatelessWidget {
 
-   messagesScreenForAllChatMembers({
-    Key? key,
-    required this.chat,
-    required this.indx,
-  }) : super(key: key);
 
-
-  final Chat chat;
-  final int indx;
+  GlobalKey<RefreshIndicatorState> refreshKey = GlobalKey<RefreshIndicatorState>();
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: BodyForAllChatMembers(indx: indx,),
+      body: RefreshIndicator(
+        key: refreshKey,
+        child: BodyForAllChatMembers(),
+        onRefresh: () async {
+          //await refreshList();
+          Navigator.pushReplacement(context,  MaterialPageRoute(
+              builder: (BuildContext context) => messagesScreenForAllChatMembers()));
+        },
+      ),
     );
+  }
+
+
+  refreshList()
+  {
+    //messagesScreenForAllChatMembers();
+    print("anik");
+  /*  return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: messagesScreenForAllChatMembers(),
+    );
+    */
   }
 
   AppBar buildAppBar() {
     return AppBar(
-      /* leading: BackButton(
-        onPressed: (){
-          AuthService.ddemeChatMessages.clear();
-          AuthService.FetchMEssage();
-         // Navigator.push(context,MaterialPageRoute(builder: (context) =>FunctioN()));
 
-        },
-      ),*/
       automaticallyImplyLeading: false,
 
       title: Row(
         children: [
           BackButton(),
           CircleAvatar(
-            backgroundImage: AssetImage(chat.image),// AssetImage("assets/images/user_2.png"),
+            backgroundImage: AssetImage(chatsData[AuthService.indx].image),// AssetImage("assets/images/user_2.png"),
           ),
           SizedBox(width: kDefaultPadding * 0.75),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                chat.name,
+                chatsData[AuthService.indx].name,
                 style: TextStyle(fontSize: 16),
               ),
               Text(
-                chat.time,
+                chatsData[AuthService.indx].time,
                 style: TextStyle(fontSize: 12),
               )
             ],

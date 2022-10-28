@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
 
 import '../../../components/filled_outline_button.dart';
 import '../../../constants.dart';
@@ -34,12 +35,20 @@ class Body extends StatelessWidget {
             itemCount: chatsData.length,
             itemBuilder: (context, index) => ChatCard(
               chat: chatsData[index],
-              press: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => messagesScreenForAllChatMembers(chat: chatsData[index],indx: index,),
-                ),
-              ),
+              press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            messagesScreenForAllChatMembers(),
+                      ),
+
+                    );
+                    AuthService.indx=index;
+                    print(index);
+                    //print("object");
+
+              }
             ),
           ),
         ),

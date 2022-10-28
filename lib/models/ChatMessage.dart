@@ -48,6 +48,17 @@ List demeChatMessages = [
   ChatListObject("Ralpha"),
   ChatListObject("Jacob"),
   ChatListObject("Albert"),
+  ChatListObject("Wilson"),
+  ChatListObject("Howard"),
+  ChatListObject("Ralpha"),
+  ChatListObject("Jacob"),
+  ChatListObject("Albert"),
+  ChatListObject("Wilson"),
+  ChatListObject("Howard"),
+  ChatListObject("Ralpha"),
+  ChatListObject("Jacob"),
+  ChatListObject("Albert"),
+
   //ChatListObject("Wilson"),
   /*
   ChatMessage(

@@ -23,7 +23,7 @@ class AuthService{
   static String x=  FirebaseAuth.instance.currentUser!.displayName!;
   static String y=  FirebaseAuth.instance.currentUser!.email!;
   static String z= FirebaseAuth.instance.currentUser!.photoURL!;
-
+ static  int indx= 0;
 
 //<<<<<<< HEAD
  static String? Profilepicurl= "https://upload.wikimedia.org/wikipedia/commons/4/49/A_black_image.jpg" ;

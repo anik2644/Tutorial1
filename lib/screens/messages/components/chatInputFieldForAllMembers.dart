@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
 
 import '../../../constants.dart';
 import '../../../models/ChatMessage.dart';
 
 class ChatInputFieldForALlMEmbers extends StatelessWidget {
-   ChatInputFieldForALlMEmbers({
-    Key? key,
-    required this.indx,
-  }) : super(key: key);
 
-  final indx;
   var message_type_box_controller = new TextEditingController();
 
   @override
@@ -86,7 +82,7 @@ class ChatInputFieldForALlMEmbers extends StatelessWidget {
                     */
                     IconButton(onPressed:  (){
 
-                      demeChatMessages[indx].messageList.add( ChatMessage(message_type_box_controller.text, ChatMessageType.text,MessageStatus.viewed,true,));
+                      demeChatMessages[AuthService.indx].messageList.add( ChatMessage(message_type_box_controller.text, ChatMessageType.text,MessageStatus.viewed,true,));
                       message_type_box_controller.text = "";
                     }, icon: Icon(Icons.send))
                   ],
