@@ -8,18 +8,103 @@ import '../../constants.dart';
 import '../../models/ChatMessage.dart';
 import 'components/body.dart';
 
-class MessagesScreen extends StatelessWidget {
+class MessagesScreen extends StatefulWidget {
+
+
+  @override
+  State<MessagesScreen> createState() => _MessagesScreenState();
+}
+
+class _MessagesScreenState extends State<MessagesScreen> {
+  //var chatdocid;
+
+  @override
+  void initState() {
+    super.initState();
+    //checkUser();
+  //  AuthService.ddemeChatMessages.clear();
+
+    if(AuthService.ddemeChatMessages.length==0)
+     AuthService.FetchMEssage();
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: Body(),
+      body: RefreshIndicator(
+        // key: refreshKey,
+        child: Body(),
+        onRefresh: () async {
+          await refreshList();
+         },
+      ),
+      // Body(),
     );
   }
+  Future<Null> refreshList()
+  async {
+    Navigator.pushReplacement(context, MaterialPageRoute(
+        builder: (BuildContext context) => MessagesScreen()));
+/*
+   int flag=0;
+    int t= AuthService.ddemeChatMessages.length;
+    //AuthService.ddemeChatMessages.clear();
 
+
+   print("in refresh function");
+
+    if(AuthService.ddemeChatMessages.length==0)
+      {
+        print("come with zero");
+      //  await AuthService.FetchMEssage();
+      }
+print(AuthService.ddemeChatMessages.length);
+
+    /*
+    while(flag==0) {
+      if (AuthService.ddemeChatMessages.length != 0) {
+        Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (BuildContext context) => MessagesScreen()));
+        flag = 1;
+        print('fetchdone');
+      }
+      else {
+
+        Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (BuildContext context) => MessagesScreen()));
+        flag++;
+        print('flaag');
+      }
+    }
+
+     */
+    /*
+    await FirebaseFirestore.instance.collection("adminchats").where('users', isEqualTo: {AuthService.friendUid: null, AuthService.currentUserId: null})
+        .get().then((value) => {
+      AuthService.chatdocid= value.docs.single.id,
+      value.docs.forEach((result) {
+        print(result.data());
+        FirebaseFirestore.instance.collection("adminchats").doc(AuthService.chatdocid)
+            .collection("messages").orderBy('createdOn',  descending: false).get().then((subcol) =>
+        {
+          subcol.docs.forEach((element) {
+            var data;
+            data= element.data();
+            //AuthService.ddemeChatMessages.add(ChatMessage( data["msg"].toString() ,ChatMessageType.text,MessageStatus.viewed, data["uid"]==AuthService.email ? true : false));
+          })
+        });
+      })
+    });
+
+   */
+*/
+  }
   AppBar buildAppBar() {
     return AppBar(
-     /* leading: BackButton(
+      /* leading: BackButton(
         onPressed: (){
           AuthService.ddemeChatMessages.clear();
           AuthService.FetchMEssage();
@@ -28,11 +113,23 @@ class MessagesScreen extends StatelessWidget {
         },
       ),*/
       automaticallyImplyLeading: false,
+      backgroundColor: Colors.black,
+      leading: BackButton(
+        onPressed: (){
+          AuthService.ddemeChatMessages.clear();
+          Navigator.pop(context);
+        },
+      ),
 
       title: Row(
+
+       // mainAxisAlignment: MainAxisAlignment.center,
+        //crossAxisAlignment: CrossAxisAlignment.center,
+
         children: [
-          BackButton(),
+         // DecorationPosition.background= Colors.black,
           CircleAvatar(
+            backgroundColor: Colors.white,
             child: Image.network(AuthService.adminProfilepicurl.toString(),),
 
           ),
@@ -41,18 +138,19 @@ class MessagesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AuthService.name,
+                 "Admin" , //  AuthService.name,
                 style: TextStyle(fontSize: 16),
               ),
               Text(
-                "Active 3m ago",
-                style: TextStyle(fontSize: 12),
+                "Active now",
+                style: TextStyle(fontSize: 12, ),
               )
             ],
           )
         ],
       ),
       actions: [
+        /*
         IconButton(
           icon: Icon(Icons.local_phone),
           onPressed: () {
@@ -61,18 +159,14 @@ class MessagesScreen extends StatelessWidget {
             AuthService.FetchMEssage();
 
           },
-        ),
+        ),*/
         IconButton(
 
-          icon: Icon(Icons.videocam),
+          icon: Icon(Icons.refresh_sharp),
           onPressed: () {
-
             AuthService.ddemeChatMessages.clear();
-            print("In Video");
-            print(AuthService.friendUid);
-            print(AuthService.currentUserId);
-            print("done");
-            var chatdocid;
+            /*
+
             FirebaseFirestore.instance.collection("adminchats").where('users', isEqualTo: {AuthService.friendUid: null, AuthService.currentUserId: null})
                 .get().then((value) => {
               chatdocid= value.docs.single.id,
@@ -89,9 +183,7 @@ class MessagesScreen extends StatelessWidget {
                   subcol.docs.forEach((element) {
                     var data;
                     data= element.data();
-
-
-                    AuthService.ddemeChatMessages.add(ChatMessage( data["msg"].toString() ,ChatMessageType.text,MessageStatus.viewed, data["uid"]==AuthService.email ? true : false));
+                    // AuthService.ddemeChatMessages.add(ChatMessage( data["msg"].toString() ,ChatMessageType.text,MessageStatus.viewed, data["uid"]==AuthService.email ? true : false));
 
                     //ChatMessage();
                     // print(msge.text);
@@ -106,11 +198,7 @@ class MessagesScreen extends StatelessWidget {
             });
 
 
-            print("My_earth");
-            print(AuthService.ddemeChatMessages.length);
-
-            print(AuthService.Profilepicurl.toString());
-
+             */
 
           },
         ),

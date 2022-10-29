@@ -56,6 +56,7 @@ class Message extends StatelessWidget {
         children: [
           if (!message.isSender) ...[
             CircleAvatar(
+              backgroundColor: Colors.white,
               radius: 12,
               child: Image.network(AuthService.adminProfilepicurl.toString(),),
             ),

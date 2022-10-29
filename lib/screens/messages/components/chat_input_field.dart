@@ -91,7 +91,7 @@ class ChatInputField extends StatelessWidget {
                           //  print(message_type_box_controller.text);
 
                           AuthService.ddemeChatMessages.clear();
-                          AuthService.FetchMEssage();
+                         // AuthService.FetchMEssage();
 
 
                           final friendUid = "admin";

@@ -58,9 +58,14 @@ class Body extends StatelessWidget {
     // AuthService.ddemeChatMessages.add(ChatMessage( "anik is a good boy" ,ChatMessageType.text,MessageStatus.viewed,true ));
 
     //AuthService.ddemeChatMessages.add(ChatMessage( "He is fine" ,ChatMessageType.text,MessageStatus.viewed,true ));
-    print("this is body");
+
     //AuthService.ddemeChatMessages.clear();
-    AuthService.FetchMEssage();
+    if(AuthService.ddemeChatMessages==0)
+      {
+        print("this is body");
+       // AuthService.FetchMEssage();
+      }
+
 
 /*
 

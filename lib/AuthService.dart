@@ -37,7 +37,8 @@ class AuthService{
 
 
 //<<<<<<< HEAD
-  static String? adminProfilepicurl= "https://lh3.googleusercontent.com/a/ALm5wu1Nx5jn2mTV8M1M157ym8VCUglZacHP9ECEt4gInA=s96-c" ;
+  static String? adminProfilepicurl= "https://cdn-icons-png.flaticon.com/512/709/709722.png?w=740&t=st=1667025404~exp=1667026004~hmac=991c145c6bdf43e1336c6a5fa3a89b8422d8acbacf2e2467df109a9b3750ffd0";
+  //"https://lh3.googleusercontent.com/a/ALm5wu1Nx5jn2mTV8M1M157ym8VCUglZacHP9ECEt4gInA=s96-c" ;
   static String? friendProfilepicurl= "https://lh3.googleusercontent.com/a/ALm5wu1Nx5jn2mTV8M1M157ym8VCUglZacHP9ECEt4gInA=s96-c" ;
 
   static List<ChatMessage> ddemeChatMessages = [];
