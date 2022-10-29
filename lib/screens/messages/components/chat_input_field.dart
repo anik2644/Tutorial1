@@ -33,7 +33,7 @@ class ChatInputField extends StatelessWidget {
       child: SafeArea(
         child: Row(
           children: [
-            Icon(Icons.mic, color: kPrimaryColor),
+           // Icon(Icons.mic, color: kPrimaryColor),
             const SizedBox(width: kDefaultPadding),
             Expanded(
               child: Container(
@@ -48,18 +48,15 @@ class ChatInputField extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.sentiment_satisfied_alt_outlined,
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .color!
-                          .withOpacity(0.64),
+                      color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64),
                     ),
                     SizedBox(width: kDefaultPadding / 4),
                     Expanded(
                       child: TextField(
-                        decoration: InputDecoration(
+                         decoration: InputDecoration(
                           hintText: "Type message",
                           border: InputBorder.none,
+                          // hintTextDirection: Colors.white,
                         ),
                         controller: message_type_box_controller =
                         new TextEditingController(),

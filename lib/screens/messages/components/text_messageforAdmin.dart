@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../models/ChatMessage.dart';
 
-class TextMessage extends StatelessWidget {
-  const TextMessage({
+class TextMessageforAdmin extends StatelessWidget {
+  const TextMessageforAdmin({
     Key? key,
     this.message,
   }) : super(key: key);
@@ -23,7 +23,7 @@ class TextMessage extends StatelessWidget {
         vertical: kDefaultPadding / 2,
       ),
       decoration: BoxDecoration(
-        color:  kPrimaryColor.withOpacity(message!.isSender ? 1 : 0.1),
+        color: message!.isSender ? Colors.black : Colors.white, // kPrimaryColor.withOpacity(message!.isSender ? 1 : 0.1),
         borderRadius: BorderRadius.circular(30),
       ),
       child: Text(

@@ -91,7 +91,7 @@ class Body extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: ListView.builder(
               itemCount: AuthService.ddemeChatMessages.length,
-              itemBuilder: (context, index) => Message(AuthService.ddemeChatMessages[index]),
+              itemBuilder: (context, index) => MessageForAdmin(AuthService.ddemeChatMessages[index]),
             ),
           ),
         ),

@@ -53,7 +53,8 @@ class messagesScreenForAllChatMembers extends StatelessWidget {
         children: [
           BackButton(),
           CircleAvatar(
-            backgroundImage: AssetImage(chatsData[AuthService.indx].image),// AssetImage("assets/images/user_2.png"),
+            backgroundImage: NetworkImage(chatsData[AuthService.indx].image),// AssetImage("assets/images/user_2.png")
+            // child: Image.network(chatsData[AuthService.indx].image),
           ),
           SizedBox(width: kDefaultPadding * 0.75),
           Column(

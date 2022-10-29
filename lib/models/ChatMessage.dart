@@ -31,10 +31,10 @@ class ChatListObject{
   String receiver="admin";
 
   List <ChatMessage> messageList = [
-    ChatMessage("Hi", ChatMessageType.text,MessageStatus.viewed,false,),
-    ChatMessage("Hello", ChatMessageType.text,MessageStatus.viewed,true,),
-    ChatMessage("What are you doing", ChatMessageType.text,MessageStatus.viewed,true,),
-    ChatMessage("I am Watching game", ChatMessageType.text,MessageStatus.viewed,false,),
+    ChatMessage("Hi, Please let know about us", ChatMessageType.text,MessageStatus.viewed,false,),
+    ChatMessage("How to get information", ChatMessageType.text,MessageStatus.viewed,true,),
+    //ChatMessage("What are you doing", ChatMessageType.text,MessageStatus.viewed,true,),
+    ChatMessage("How may i help you ", ChatMessageType.text,MessageStatus.viewed,false,),
 
   ];
 

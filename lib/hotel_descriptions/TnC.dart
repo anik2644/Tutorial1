@@ -1,3 +1,4 @@
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -6,11 +7,13 @@ import 'dart:io';
 import 'Facilities.dart';
 import 'descriptions.dart';
 
-Widget buildNavigationButton() => FloatingActionButton.extended(
+Widget buildNavigationButton(BuildContext context) => FloatingActionButton.extended(
     icon: Icon(Icons.book),
     label: Text("Book Now"),
     backgroundColor: Colors.green,
     onPressed: () {
+
+      Navigator.pop(context);
       print('press Done');
     });
 
@@ -76,7 +79,7 @@ class _hotel_descriptionState extends State<hotel_description> {
         ),
       ),
       backgroundColor: Colors.white,
-      floatingActionButton: buildNavigationButton(),
+      floatingActionButton: buildNavigationButton(context),
     );
   }
 }
