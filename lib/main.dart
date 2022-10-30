@@ -25,6 +25,7 @@ class FunctioN extends StatefulWidget {
 class _FunctioNState extends State<FunctioN> {
   get drawer => null;
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,7 +36,7 @@ class _FunctioNState extends State<FunctioN> {
 }
 
 class Myapp extends StatefulWidget {
-  const Myapp({Key? key}) : super(key: key);
+   Myapp({Key? key}) : super(key: key);
 
   static int selectedHotel = 0;
   static List<Hotel> hotelList = [
@@ -47,8 +48,6 @@ class Myapp extends StatefulWidget {
       "https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg",
     ),
     Hotel(
-//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
-
       "Hotel Grand Mahal",
       "Srinagar,India",
       "https://media.istockphoto.com/photos/luxury-resort-picture-id104731717?k=20&m=104731717&s=612x612&w=0&h=40INtJRzhmU1O4Rj24zdY8vj4aGsWpPaEfojaVQ8xBo=",
@@ -85,6 +84,11 @@ class Myapp extends StatefulWidget {
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTjGpks3M8iiSaW-NvwJll2LTZQEkyfAj8OUV5_Jjs32LlQHCC2HbBfGBntZgMcfRRzDc&usqp=CAU",
     ),*/
   ];
+
+  List<Hotel>display_list = List.from(hotelList);
+
+
+
 
   static FetchHotel() async {
     // print("this is fetch ");
@@ -147,6 +151,63 @@ class Myapp extends StatefulWidget {
 class _MyappState extends State<Myapp> {
   GlobalKey<RefreshIndicatorState> refreshKey =
       GlobalKey<RefreshIndicatorState>();
+
+
+  static List<Hotel> hotelList = [
+    Hotel(
+      "Hotel Sea Crown",
+      "Coxs Bazaar, Bangladesh",
+      "https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg",
+      "https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg",
+      "https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg",
+    ),
+    Hotel(
+      "Hotel Grand Mahal",
+      "Srinagar,India",
+      "https://media.istockphoto.com/photos/luxury-resort-picture-id104731717?k=20&m=104731717&s=612x612&w=0&h=40INtJRzhmU1O4Rj24zdY8vj4aGsWpPaEfojaVQ8xBo=",
+      "https://media.istockphoto.com/photos/luxury-resort-picture-id104731717?k=20&m=104731717&s=612x612&w=0&h=40INtJRzhmU1O4Rj24zdY8vj4aGsWpPaEfojaVQ8xBo=",
+      "https://media.istockphoto.com/photos/luxury-resort-picture-id104731717?k=20&m=104731717&s=612x612&w=0&h=40INtJRzhmU1O4Rj24zdY8vj4aGsWpPaEfojaVQ8xBo=",
+    ),
+    Hotel(
+      "Skylight Homez",
+      "Singapore",
+      "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/07/1hotelsouthbeach.png",
+      "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/07/1hotelsouthbeach.png",
+      "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/07/1hotelsouthbeach.png",
+    ),
+    Hotel(
+      "The Royal Mount",
+      "Dubai",
+      "https://img1.10bestmedia.com/Images/Photos/379999/Main-Pool-1_54_990x660.jpg",
+      "https://img1.10bestmedia.com/Images/Photos/379999/Main-Pool-1_54_990x660.jpg",
+      "https://img1.10bestmedia.com/Images/Photos/379999/Main-Pool-1_54_990x660.jpg",
+    ),
+    Hotel(
+      "Hotel Niharika",
+      "Bangladesh",
+      "https://imageio.forbes.com/specials-images/imageserve/5ec567daf2098c0006c6036e/Kimpton-Shanghai-Hotel/960x0.jpg?format=jpg&width=960",
+      "https://imageio.forbes.com/specials-images/imageserve/5ec567daf2098c0006c6036e/Kimpton-Shanghai-Hotel/960x0.jpg?format=jpg&width=960",
+      "https://imageio.forbes.com/specials-images/imageserve/5ec567daf2098c0006c6036e/Kimpton-Shanghai-Hotel/960x0.jpg?format=jpg&width=960",
+    ),
+    /*
+    Hotel(
+      "Hotel Radisson",
+      "Bangladesh",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTjGpks3M8iiSaW-NvwJll2LTZQEkyfAj8OUV5_Jjs32LlQHCC2HbBfGBntZgMcfRRzDc&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTjGpks3M8iiSaW-NvwJll2LTZQEkyfAj8OUV5_Jjs32LlQHCC2HbBfGBntZgMcfRRzDc&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTjGpks3M8iiSaW-NvwJll2LTZQEkyfAj8OUV5_Jjs32LlQHCC2HbBfGBntZgMcfRRzDc&usqp=CAU",
+    ),*/
+  ];
+  List<Hotel>display_list = List.from(hotelList);
+
+  void updateList(String value) {
+    setState(() {
+      display_list = hotelList
+          .where((element) =>
+          element.name!.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:untitled12/hotel_descriptions/hotel_description.dart';
 import 'package:untitled12/main.dart';
+import 'package:untitled12/models/Hotel.dart';
 
 import 'Details_page.dart';
 //>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
@@ -15,8 +16,19 @@ class Mybody extends StatefulWidget {
 }
 
 class _MybodyState extends State<Mybody> {
+  List<Hotel> display_list = List.from(Myapp.hotelList);void updateList(String value) {
+    setState(() {
+      display_list = Myapp.hotelList
+          .where((element) =>
+          element.name!.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    });
+  }
+
+  
 
   GestureDetector MyArticles(String imageVal, String hotelname, String hotellocation,int index) {
+
     return GestureDetector(
 
       onTap: () {
@@ -85,6 +97,7 @@ class _MybodyState extends State<Mybody> {
 
   @override
   Widget build(BuildContext context) {
+
     return  CustomScrollView(
       slivers: [
         SliverAppBar(
@@ -108,8 +121,10 @@ class _MybodyState extends State<Mybody> {
               width: double.infinity,
               height: 40,
               color: Colors.white,
-              child: const Center(
+              child:  Center(
                 child: TextField(
+                  onChanged: (value)=> updateList(value),
+
                   decoration: InputDecoration(
                     hintText: 'Search for something',
                     prefixIcon: Icon(Icons.search),
@@ -123,14 +138,14 @@ class _MybodyState extends State<Mybody> {
         SliverList(
           delegate: SliverChildListDelegate(
             [
-              Container(
+        Container(
                 margin: EdgeInsets.symmetric(vertical: 20.0),
                 height: 900,
                 child:  ListView.builder(
-                  itemCount: Myapp.hotelList.length,
+                  itemCount: display_list.length,
                   itemBuilder: (context, index) => MyArticles(
-                      Myapp.hotelList[index].x,
-                      Myapp.hotelList[index].name,
+                      display_list[index].x,
+                      display_list[index].name,
                       "Coxs Bazaar, Bangladesh",index
                     /*
                       chat: chatsData[index],
