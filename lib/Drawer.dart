@@ -55,7 +55,8 @@ class _MydrawerState extends State<Mydrawer> {
                 style: TextStyle(color: Colors.black)),
             currentAccountPicture: CircleAvatar(
              // backgroundColor: Colors.black,
-               child:  Image.network(AuthService.Profilepicurl.toString(), height: 100, width: 100, ),
+
+             backgroundImage: NetworkImage(AuthService.Profilepicurl.toString(), ),
             ),
           ):  DrawerHeader(
             decoration: BoxDecoration(

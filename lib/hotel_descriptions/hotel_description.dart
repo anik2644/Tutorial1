@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:untitled12/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Facilities.dart';
@@ -37,7 +38,7 @@ class _hotel_descriptionState extends State<hotel_description> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          widget.name,
+          Myapp.hotelList[Myapp.selectedHotel].name,
           style: const TextStyle(
               fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
         ),
@@ -58,7 +59,8 @@ class _hotel_descriptionState extends State<hotel_description> {
                       borderRadius: BorderRadius.circular(8.0),
                       image: DecorationImage(
                         image: NetworkImage(
-                            "https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg"),
+                          Myapp.hotelList[Myapp.selectedHotel].x),
+                            //"https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -71,7 +73,9 @@ class _hotel_descriptionState extends State<hotel_description> {
                       borderRadius: BorderRadius.circular(8.0),
                       image: DecorationImage(
                         image: NetworkImage(
-                            "https://cf.bstatic.com/xdata/images/hotel/max1280x900/121123916.jpg?k=4c7205e458ef9d368d14ad4aacd8a45c394110e2b51f2de47a1ffb8d1765cfd6&o=&hp=1"),
+                          Myapp.hotelList[Myapp.selectedHotel].y
+                          // "https://cf.bstatic.com/xdata/images/hotel/max1280x900/121123916.jpg?k=4c7205e458ef9d368d14ad4aacd8a45c394110e2b51f2de47a1ffb8d1765cfd6&o=&hp=1"
+                        ),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -84,14 +88,16 @@ class _hotel_descriptionState extends State<hotel_description> {
                       borderRadius: BorderRadius.circular(8.0),
                       image: DecorationImage(
                         image: NetworkImage(
-                            "https://i.travelapi.com/hotels/10000000/9750000/9746600/9746513/b36e79aa_z.jpg"),
+                          Myapp.hotelList[Myapp.selectedHotel].z
+                            //"https://i.travelapi.com/hotels/10000000/9750000/9746600/9746513/b36e79aa_z.jpg"
+                        ),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
 
                   //4th Image of Slider
-
+              /*
                   Container(
                     margin: const EdgeInsets.all(6.0),
                     decoration: BoxDecoration(
@@ -103,6 +109,7 @@ class _hotel_descriptionState extends State<hotel_description> {
                       ),
                     ),
                   ),
+               */
                 ],
 
                 //Slider Container properties
@@ -118,7 +125,7 @@ class _hotel_descriptionState extends State<hotel_description> {
                 ),
               ),
             ),
-            titleSection,
+             titleSection(),
             const SizedBox(
               width: double.infinity,
               height: 5,
@@ -150,6 +157,8 @@ class _hotel_descriptionState extends State<hotel_description> {
   }
 }
 
+
+/*
 Column _buildButtonColumn(Color color, IconData icon, String label) {
   return Column(
     mainAxisSize: MainAxisSize.min,
@@ -170,7 +179,8 @@ Column _buildButtonColumn(Color color, IconData icon, String label) {
     ],
   );
 }
-
+*/
+/*
 class GoogleMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -182,3 +192,4 @@ class GoogleMap extends StatelessWidget {
     throw UnimplementedError();
   }
 }
+*/

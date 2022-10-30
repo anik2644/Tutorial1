@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:untitled12/hotel_descriptions/hotel_description.dart';
+import 'package:untitled12/main.dart';
 
 import 'Details_page.dart';
 //>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
@@ -15,10 +16,13 @@ class Mybody extends StatefulWidget {
 
 class _MybodyState extends State<Mybody> {
 
-  GestureDetector MyArticles(String imageVal, String hotelname, String hotellocation) {
+  GestureDetector MyArticles(String imageVal, String hotelname, String hotellocation,int index) {
     return GestureDetector(
 
       onTap: () {
+
+        Myapp.selectedHotel= index;
+        print(Myapp.selectedHotel);
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => hotel_description()));
 //>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
@@ -32,7 +36,29 @@ class _MybodyState extends State<Mybody> {
         child: Card(
           child: Wrap(
             children: <Widget>[
-              Image.network(imageVal),
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  height:MediaQuery.of(context).size.width/2 ,
+
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(11.0),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        imageVal
+                        //"https://www.exampledomain.com/images/background.jpg"
+                    ),
+                    fit: BoxFit.cover,),// child: Image.network(imageVal)
+              ),
+                 /*child:
+                 ListTile(
+                   title: Text(hotelname),
+                   subtitle: Text(hotellocation),
+                 ),
+                 */
+                      
+              ),
+
               ListTile(
                 title: Text(hotelname),
                 subtitle: Text(hotellocation),
@@ -100,12 +126,37 @@ class _MybodyState extends State<Mybody> {
               Container(
                 margin: EdgeInsets.symmetric(vertical: 20.0),
                 height: 900,
-                child: ListView(
+                child:  ListView.builder(
+                  itemCount: Myapp.hotelList.length,
+                  itemBuilder: (context, index) => MyArticles(
+                      Myapp.hotelList[index].x,
+                      Myapp.hotelList[index].name,
+                      "Coxs Bazaar, Bangladesh",index
+                    /*
+                      chat: chatsData[index],
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                messagesScreenForAllChatMembers(),
+                          ),
+
+                        );
+                        AuthService.indx=index;
+                        print(index);
+                        //print("object");
+
+                      }
+
+                     */
+                  ),
+                ),
+                /*
+                ListView(
                   scrollDirection: Axis.vertical,
                   children: <Widget>[
                     MyArticles(
-//<<<<<<< HEAD
-//=======
                         "https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg",
                         "Hotel Sea Crown",
                         "Coxs Bazaar, Bangladesh"),
@@ -136,6 +187,7 @@ class _MybodyState extends State<Mybody> {
                    // SizedBox(height: 95,)
                   ],
                 ),
+*/
 
 //>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
               ),

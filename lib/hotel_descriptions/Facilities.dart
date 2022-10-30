@@ -2,6 +2,7 @@ import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../main.dart';
 import 'descriptions.dart';
 
 Widget TnC_logo = Card(
@@ -20,13 +21,17 @@ GestureDetector MyArticles(String hotelname, String hotellocation) {
         child: Wrap(
           children: <Widget>[
             ListTile(
-              title: Text(hotelname,style: TextStyle(fontWeight: FontWeight.bold),),
+              title: Text( Myapp.hotelList[Myapp.selectedHotel].name,style: TextStyle(fontWeight: FontWeight.bold),),
               subtitle: Text(hotellocation),
             ),
           ],
         ),
       ),
     ),
+    onTap: ()
+    {
+      print(Myapp.hotelList[Myapp.selectedHotel].name.toString());
+    },
   );
 }
 
@@ -38,7 +43,9 @@ GestureDetector description() {
         child: Wrap(
           children: <Widget>[
             ListTile(
-              title: Text('Hotel Description',style: TextStyle(fontWeight: FontWeight.bold),),
+              title: Text(  Myapp.hotelList[Myapp.selectedHotel].description
+            /*'Hotel Description'*/
+          ,style: TextStyle(fontWeight: FontWeight.bold),),
             ),
             Container(
                 margin : EdgeInsets.symmetric(horizontal: 15),
@@ -205,54 +212,58 @@ Widget wifi = Row(
   ],
 );
 
-Widget titleSection = Container(
-  padding: EdgeInsets.only(right: 32, left: 32, top: 0, bottom: 0),
-  child: Row(
-    children: [
-      Expanded(
-        /*1*/
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /*2*/
-            Container(
-              //padding:  EdgeInsets.only(bottom: 8),
-              child: Text(
-                'Hotel Sea Crown',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Colors.black),
-              ),
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.location_on,
-                  size: 20,
-                  color: Colors.green,
-                ),
-                Text(
-                  'Coxs Bazaar, Chittagong',
+Widget titleSection(){
+ return Container(
+    padding: EdgeInsets.only(right: 32, left: 32, top: 0, bottom: 0),
+    child: Row(
+      children: [
+        Expanded(
+          /*1*/
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /*2*/
+              Container(
+                //padding:  EdgeInsets.only(bottom: 8),
+                child: Text(
+                  Myapp.hotelList[Myapp.selectedHotel].name,
                   style: TextStyle(
-                      color: Colors.grey[500], fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.black),
                 ),
-              ],
-            ),
-          ],
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.location_on,
+                    size: 20,
+                    color: Colors.green,
+                  ),
+                  Text(
+                    'Coxs Bazaar, Chittagong',
+                    style: TextStyle(
+                        color: Colors.grey[500], fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-      ),
-      FavoriteButton(
-        isFavorite: false,
-        // iconDisabledColor: Colors.white,
-        valueChanged: (_isFavorite) {
-          print('Is Favorite : $_isFavorite');
-        },
-      ),
-    ],
-  ),
-);
+        FavoriteButton(
+          isFavorite: false,
+          // iconDisabledColor: Colors.white,
+          valueChanged: (_isFavorite) {
+            print('Is Favorite : $_isFavorite');
+          },
+        ),
+      ],
+    ),
+  );
+}
+/*
 
+*/
 Widget buttonSection = Card(
   child:   Row(
 
