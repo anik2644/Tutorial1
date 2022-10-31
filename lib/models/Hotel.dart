@@ -13,6 +13,7 @@ class Hotel{
  late String x;
  late String y ;
  late String z;
+ bool isFav=false;
   String cellNo= "01521756345";
   //List <String> image;
 
@@ -25,6 +26,7 @@ class Hotel{
       this.x =x;
       this.y=y;
       this.z=z;
+
   //  print("done");
   //  var image;
    /*
