@@ -20,7 +20,7 @@ class Hotel{
 
 
   //
-  Hotel(String name,String description,String x,String y,String z)
+   Hotel(String name,String description,String x,String y,String z)
   {
       this.name= name;
       this.description= description;

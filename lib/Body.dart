@@ -17,7 +17,9 @@ class Mybody extends StatefulWidget {
 }
 
 class _MybodyState extends State<Mybody> {
-  List<Hotel> display_list = List.from(Myapp.hotelList);void updateList(String value) {
+  List<Hotel> display_list = List.from(Myapp.hotelList);
+
+  void updateList(String value) {
     setState(() {
       display_list = Myapp.hotelList
           .where((element) =>
@@ -170,6 +172,7 @@ class _MybodyState extends State<Mybody> {
                      */
                   ),
                 ),
+
                 /*
                 ListView(
                   scrollDirection: Axis.vertical,
@@ -207,7 +210,6 @@ class _MybodyState extends State<Mybody> {
                 ),
 */
 
-//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
               ),
             ],
           ),
