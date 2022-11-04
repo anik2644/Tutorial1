@@ -22,10 +22,10 @@ class _MessagesScreenState extends State<MessagesScreen> {
   void initState() {
     super.initState();
     //checkUser();
-  //  AuthService.ddemeChatMessages.clear();
+    //  AuthService.ddemeChatMessages.clear();
 
     if(AuthService.ddemeChatMessages.length==0)
-     AuthService.FetchMEssage();
+      AuthService.FetchMEssage();
 
   }
 
@@ -39,7 +39,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
         child: Body(),
         onRefresh: () async {
           await refreshList();
-         },
+        },
       ),
       // Body(),
     );
@@ -123,11 +123,11 @@ print(AuthService.ddemeChatMessages.length);
 
       title: Row(
 
-       // mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
         //crossAxisAlignment: CrossAxisAlignment.center,
 
         children: [
-         // DecorationPosition.background= Colors.black,
+          // DecorationPosition.background= Colors.black,
           CircleAvatar(
             backgroundColor: Colors.white,
             child: Image.network(AuthService.adminProfilepicurl.toString(),),
@@ -138,7 +138,7 @@ print(AuthService.ddemeChatMessages.length);
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                 "Admin" , //  AuthService.name,
+                "Admin" , //  AuthService.name,
                 style: TextStyle(fontSize: 16),
               ),
               Text(
@@ -165,6 +165,10 @@ print(AuthService.ddemeChatMessages.length);
           icon: Icon(Icons.refresh_sharp),
           onPressed: () {
             AuthService.ddemeChatMessages.clear();
+
+            Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (BuildContext context) => MessagesScreen()));
+
             /*
 
             FirebaseFirestore.instance.collection("adminchats").where('users', isEqualTo: {AuthService.friendUid: null, AuthService.currentUserId: null})

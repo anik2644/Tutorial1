@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:untitled12/AuthService.dart';
 
 import '../../../constants.dart';
+import '../../../models/ChatMessage.dart';
+import '../message_screen.dart';
 
 class ChatInputField extends StatelessWidget {
   const ChatInputField({
     Key? key,
-   // required this.indx;
+    // required this.indx;
   }) : super(key: key);
 
   //final int indx;
@@ -33,7 +35,7 @@ class ChatInputField extends StatelessWidget {
       child: SafeArea(
         child: Row(
           children: [
-           // Icon(Icons.mic, color: kPrimaryColor),
+            // Icon(Icons.mic, color: kPrimaryColor),
             const SizedBox(width: kDefaultPadding),
             Expanded(
               child: Container(
@@ -53,7 +55,7 @@ class ChatInputField extends StatelessWidget {
                     SizedBox(width: kDefaultPadding / 4),
                     Expanded(
                       child: TextField(
-                         decoration: InputDecoration(
+                        decoration: InputDecoration(
                           hintText: "Type message",
                           border: InputBorder.none,
                           // hintTextDirection: Colors.white,
@@ -87,8 +89,8 @@ class ChatInputField extends StatelessWidget {
 
                           //  print(message_type_box_controller.text);
 
-                          AuthService.ddemeChatMessages.clear();
-                         // AuthService.FetchMEssage();
+                          //- AuthService.ddemeChatMessages.clear();
+                          // AuthService.FetchMEssage();
 
 
                           final friendUid = "admin";
@@ -114,16 +116,17 @@ class ChatInputField extends StatelessWidget {
                               } else {
                                 await chats.add({
                                   'users': {
+                                    currentUserId.toString(): null,
                                     friendUid.toString(): null,
-                                    currentUserId.toString(): null
+
                                   },
+                                  'name' : currentUserId.toString(),
                                 }).then((value) => {
                                   chatDocId = value});
                                 //   print("Arrogant");
                               }
                             },
-                          )
-                              .catchError((error) {});
+                          ).catchError((error) {});
 
                           chats.doc(chatDocId.toString()).collection('messages').add({
                             'createdOn': FieldValue.serverTimestamp(),
@@ -134,10 +137,22 @@ class ChatInputField extends StatelessWidget {
                             //_textController.text = '';
                           });
 
+                          AuthService.ddemeChatMessages.add(ChatMessage(
+                              message_type_box_controller.text.toString(),
+                              ChatMessageType.text,
+                              MessageStatus.viewed,
+                              true ));
 
 
                           // print("message sent done");
                           message_type_box_controller.text = "";
+
+                          Navigator.pushReplacement(context, MaterialPageRoute(
+                              builder: (BuildContext context) => MessagesScreen()));
+
+
+
+
                         },
                         icon: Icon(Icons.send))
                   ],
