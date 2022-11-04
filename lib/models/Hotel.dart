@@ -11,6 +11,7 @@ class Hotel{
   bool wifi;
 */
  late String x;
+ String location ="Cox's Bazar";
  late String y ;
  late String z;
  bool isFav=false;

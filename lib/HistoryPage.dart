@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled12/draft/HistoryModel.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({Key? key}) : super(key: key);
@@ -12,11 +13,22 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("History Page"),
+
+        title: Center(
+            child: Text("History Page"),
+        ),
+
       ),
-      body: const Center(
+      body: History_model(),
+
+
+      /*
+      const Center(
+
         child: Text("In History"),
-      ),
-    );
+        */
+
+      );
+  //  );
   }
 }
