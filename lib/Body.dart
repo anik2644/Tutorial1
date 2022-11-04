@@ -5,6 +5,7 @@ import 'package:untitled12/bodyFavorite.dart';
 import 'package:untitled12/hotel_descriptions/hotel_description.dart';
 import 'package:untitled12/main.dart';
 import 'package:untitled12/models/Hotel.dart';
+import 'package:untitled12/draft/HistoryModel.dart';
 
 import 'Details_page.dart';
 //>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
@@ -36,6 +37,8 @@ class _MybodyState extends State<Mybody> {
 
       onTap: () {
 
+       History_model.His.add(index);
+
         Myapp.selectedHotel= index;
         print(Myapp.selectedHotel);
         Navigator.push(
@@ -65,13 +68,6 @@ class _MybodyState extends State<Mybody> {
                     ),
                     fit: BoxFit.cover,),// child: Image.network(imageVal)
               ),
-                 /*child:
-                 ListTile(
-                   title: Text(hotelname),
-                   subtitle: Text(hotellocation),
-                 ),
-                 */
-                      
               ),
 
               ListTile(
@@ -81,18 +77,6 @@ class _MybodyState extends State<Mybody> {
             ],
           ),
         ),
-
-         /* child: InkWell(
-            onTap: () {}, // Handle your callback
-            child: Ink(height: 100, width: 100, color: Colors.blue),
-          ),
-
-          child: GestureDetector(
-            onTap: () {
-              print("Click event on Container");
-            },
-            child: Container(.......),*/
-         // )
 
       ),
     );
@@ -151,64 +135,9 @@ class _MybodyState extends State<Mybody> {
                   itemBuilder: (context, index) => MyArticles(
                       display_list[index].x,
                       display_list[index].name,
-                      "Coxs Bazaar, Bangladesh",index
-                    /*
-                      chat: chatsData[index],
-                      press: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                messagesScreenForAllChatMembers(),
-                          ),
-
-                        );
-                        AuthService.indx=index;
-                        print(index);
-                        //print("object");
-
-                      }
-
-                     */
+                      display_list[index].location,index
                   ),
                 ),
-
-                /*
-                ListView(
-                  scrollDirection: Axis.vertical,
-                  children: <Widget>[
-                    MyArticles(
-                        "https://hotelseacrownbd.com/wp-content/uploads/2017/07/Presidential-Suite_Hotel-Sea-Crown_Cox-Bazar-14-570x400.jpg",
-                        "Hotel Sea Crown",
-                        "Coxs Bazaar, Bangladesh"),
-                    MyArticles(
-//>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
-                        "https://media.istockphoto.com/photos/luxury-resort-picture-id104731717?k=20&m=104731717&s=612x612&w=0&h=40INtJRzhmU1O4Rj24zdY8vj4aGsWpPaEfojaVQ8xBo=",
-                        "Hotel Grand Mahal",
-                        "Srinagar,India"),
-                    MyArticles(
-                        "https://d36tnp772eyphs.cloudfront.net/blogs/1/2018/07/1hotelsouthbeach.png",
-                        "Skylight Homez",
-                        "Singapore"),
-                    MyArticles(
-                        "https://img1.10bestmedia.com/Images/Photos/379999/Main-Pool-1_54_990x660.jpg",
-                        "The Royal Mount",
-                        "Dubai"),
-                    MyArticles(
-                        "https://imageio.forbes.com/specials-images/imageserve/5ec567daf2098c0006c6036e/Kimpton-Shanghai-Hotel/960x0.jpg?format=jpg&width=960",
-                        "Hotel Niharika",
-                        "Bangladesh"),
-                    MyArticles(
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTjGpks3M8iiSaW-NvwJll2LTZQEkyfAj8OUV5_Jjs32LlQHCC2HbBfGBntZgMcfRRzDc&usqp=CAU",
-                        "Hotel Radisson",
-                        "Bangladesh"),
-//<<<<<<< HEAD
-
-//=======
-                   // SizedBox(height: 95,)
-                  ],
-                ),
-*/
 
               ),
             ],

@@ -1,9 +1,13 @@
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/AuthService.dart';
 import 'package:untitled12/bodyFavorite.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
+import '../models/Chat.dart';
+import '../models/ChatMessage.dart';
+import '../screens/messages/messageScreenForAllChatMembers.dart';
 import 'descriptions.dart';
 bool _selectedIndex=true;
 
@@ -252,16 +256,30 @@ Widget titleSection(){
             ],
           ),
         ),
-        // IconButton(
-        //
-        //     icon: Icon(
-        //       Icons.favorite,
-        //       color: _selectedIndex != null && _selectedIndex == position
-        //           ? Colors.redAccent
-        //           : Colors.grey,
-        //     ),
-        //     onPressed: (){
-        //       _onSelected(position);})
+        FavoriteButton(
+          isFavorite: false,
+          // iconDisabledColor: Colors.white,
+          valueChanged: (_isFavorite) {
+            bodyFavorite.favList.add(Myapp.selectedHotel);
+            print('Is Favorite : $_isFavorite');
+          },
+        ),
+        /*
+        IconButton(
+
+            icon: Icon(
+              Icons.favorite,
+              color: _selectedIndex != null && _selectedIndex == position
+                  ? Colors.redAccent
+                  : Colors.grey,
+            ),
+            onPressed: (){
+
+              _onSelected(position);
+            }
+        )
+
+         */
       ],
     ),
   );
@@ -300,7 +318,31 @@ Widget buttonSection = Card(
 
         ),
 
-        onPressed: () {},
+        onPressed: () {
+
+          chatsData.add(  Chat(
+            name: Myapp.hotelList[Myapp.selectedHotel].name,
+            lastMessage: "Hi,Please let know about us",
+            image: Myapp.hotelList[Myapp.selectedHotel].x,
+            time: "",
+            isActive: true,
+          ),);
+          demeChatMessages.add(ChatListObject(Myapp.hotelList[Myapp.selectedHotel].name),);
+          AuthService.indx= chatsData.length-1;
+
+          /*
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  messagesScreenForAllChatMembers(),
+            ),
+
+          );
+
+*/
+
+        },
 
       ),
 

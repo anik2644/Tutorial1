@@ -1,11 +1,16 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/bodyFavorite.dart';
 import 'package:untitled12/main.dart';
+
+import 'package:untitled12/hotel_descriptions/hotel_description.dart';
 
 import '../models/Hotel.dart';
 //import 'hotel_model.dart';
 
 class History_model extends StatefulWidget {
+  static List<int> His = [];
 
   @override
   State<History_model> createState() => _History_modelState();
@@ -14,27 +19,31 @@ class History_model extends StatefulWidget {
 class _History_modelState extends State<History_model> {
 
   List<Hotel> display_list = List.from(Myapp.hotelList);
+   static List<int> hist=[];
 
-  void updateList(String value) {
-
-  }
-  /*
-    setState(() {
-      /*
-      display_list = main_hotels_list
-          .where((element) =>
-          element.hotel_title!.toLowerCase().contains(value.toLowerCase()))
-          .toList();
-    });
-
-       */
-      )
+  @override
+  void initState() {
+    // TODO: implement initState
+    updateList();
+    super.initState();
   }
 
-   */
+  void updateList() {
+    print(History_model.His);
+    hist = History_model.His.toSet().toList();
+    //var reversedList = new List.from(myList.reversed);
 
+    hist = List.from(hist.reversed);
+    display_list.clear();
 
+    for(int i=0;i<hist.length;i++)
+      {
+        display_list.add(Myapp.hotelList[hist[i]]);
 
+      }
+    print(hist);
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,24 +64,6 @@ class _History_modelState extends State<History_model> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Search",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextField(
-              onChanged: (value) => updateList(value),
-              decoration: InputDecoration(
-                  hintText: 'Search for something',
-                  prefixIcon: Icon(Icons.search),
-                  suffixIcon: Icon(Icons.favorite)
-              ),
-            ),
             SizedBox(
               height: 20,
             ),
@@ -82,32 +73,58 @@ class _History_modelState extends State<History_model> {
                   child: Text(
                     "No result found",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 22,
                         fontWeight: FontWeight.bold),
                   ),
                 )
                     : ListView.builder(
-                  itemCount: display_list.length,
-                  itemBuilder: (context, index) => ListTile(
-                    contentPadding: EdgeInsets.all(8),
-                    title: Text(
-                      display_list[index].name!,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      '${display_list[index].location!}',
-                      style: TextStyle(color: Colors.white60),
-                    ),
+                    itemCount: display_list.length,
+                    itemBuilder: (context, index) => GestureDetector(
 
-                    //trailing: T, rating 12:11
-                    leading: Image.network(
-                        display_list[index].x!),
+                    onTap: () {
+                      Myapp.selectedHotel= index;
+                      print(Myapp.selectedHotel);
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => hotel_description()));
+                    },
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(8),
+                      title: Text(
+                        display_list[index].name!,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        '${display_list[index].location!}',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      leading: Container(
+                          height:50 ,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:NetworkImage(
+                                    display_list[index].x!),
+                              )
+                            ),
+
+                      ),
+                      trailing: FavoriteButton(
+                        isFavorite: false,
+                        // iconDisabledColor: Colors.white,
+                        valueChanged: (_isFavorite) {
+
+                          bodyFavorite.favList.add(index);
+                        //  bodyFavorite.favList.add(Myapp.selectedHotel);
+                          print('Is Favorite : $_isFavorite');
+                        },
+                      ),
                   ),
-                ))
-          ],
+                )
+                )
+            )],
         ),
       );
    // );

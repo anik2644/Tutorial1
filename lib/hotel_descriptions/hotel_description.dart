@@ -5,6 +5,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:untitled12/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../AuthService.dart';
+import '../models/Chat.dart';
+import '../models/ChatMessage.dart';
+import '../screens/messages/messageScreenForAllChatMembers.dart';
 import 'Facilities.dart';
 
 Widget buildNavigationButton() => FloatingActionButton.extended(
@@ -96,20 +100,6 @@ class _hotel_descriptionState extends State<hotel_description> {
                     ),
                   ),
 
-                  //4th Image of Slider
-              /*
-                  Container(
-                    margin: const EdgeInsets.all(6.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                      image: const DecorationImage(
-                        image: NetworkImage(
-                            "https://i.travelapi.com/hotels/10000000/9750000/9746600/9746513/9b331843_z.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-               */
                 ],
 
                 //Slider Container properties
@@ -138,7 +128,86 @@ class _hotel_descriptionState extends State<hotel_description> {
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   children: <Widget>[
-                    buttonSection,
+                    //buttonSection,
+                     Card(
+                child:   Row(
+
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                  children: [
+
+                    IconButton(
+
+                      icon: Icon(
+
+                        color: Colors.blue,
+
+                        Icons.call,
+
+                      ),
+
+                      onPressed: () {},
+
+                    ),
+
+                    IconButton(
+
+                      icon: Icon(
+
+                        color: Colors.blue,
+
+                        Icons.near_me,
+
+                      ),
+
+                      onPressed: () {
+
+                        chatsData = List.from(chatsData.reversed);
+                        chatsData.add(  Chat(
+                          name: Myapp.hotelList[Myapp.selectedHotel].name,
+                          lastMessage: "Hi,Please let know about us",
+                          image: Myapp.hotelList[Myapp.selectedHotel].x,
+                          time: "",
+                          isActive: true,
+                        ),);
+
+                        demeChatMessages.add(ChatListObject(Myapp.hotelList[Myapp.selectedHotel].name),);
+                        chatsData = List.from(chatsData.reversed);
+                        AuthService.indx= 0;//chatsData.length-1;
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                messagesScreenForAllChatMembers(),
+                          ),
+
+                        );
+
+
+
+                      },
+
+                    ),
+
+                    IconButton(
+
+                      icon: Icon(
+
+                        color: Colors.blue,
+
+                        Icons.share,
+
+                      ),
+
+                      onPressed: () {},
+
+                    ),
+
+                  ],
+
+                ),
+              ),
                     Popular_facilities(),
                     description(),
                     SizedBox(
@@ -156,40 +225,3 @@ class _hotel_descriptionState extends State<hotel_description> {
     );
   }
 }
-
-
-/*
-Column _buildButtonColumn(Color color, IconData icon, String label) {
-  return Column(
-    mainAxisSize: MainAxisSize.min,
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(icon, color: color),
-      Container(
-        margin: const EdgeInsets.only(top: 8),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: color,
-          ),
-        ),
-      ),
-    ],
-  );
-}
-*/
-/*
-class GoogleMap extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return SafeArea(
-        child: Scaffold(
-      body: Container(),
-    ));
-    throw UnimplementedError();
-  }
-}
-*/
