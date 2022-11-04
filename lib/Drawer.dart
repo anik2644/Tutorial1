@@ -81,9 +81,8 @@ class _MydrawerState extends State<Mydrawer> {
                           Center(
 
 //>>>>>>> 59644ea8b91eeaedf805e8efd8cb3ab7c3db0d4f
-                            child: FlatButton(
-
-                              color:Colors.green,
+                            child: OutlinedButton(
+                            //  color:Colors.green,
                               child:Container(child: Text('Login')),
                               onPressed: (){setState(() {
 
