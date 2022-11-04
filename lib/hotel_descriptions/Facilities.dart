@@ -1,9 +1,11 @@
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/bodyFavorite.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 import 'descriptions.dart';
+bool _selectedIndex=true;
 
 Widget TnC_logo = Card(
   child: Wrap(
@@ -250,13 +252,16 @@ Widget titleSection(){
             ],
           ),
         ),
-        FavoriteButton(
-          isFavorite: false,
-          // iconDisabledColor: Colors.white,
-          valueChanged: (_isFavorite) {
-            print('Is Favorite : $_isFavorite');
-          },
-        ),
+        // IconButton(
+        //
+        //     icon: Icon(
+        //       Icons.favorite,
+        //       color: _selectedIndex != null && _selectedIndex == position
+        //           ? Colors.redAccent
+        //           : Colors.grey,
+        //     ),
+        //     onPressed: (){
+        //       _onSelected(position);})
       ],
     ),
   );

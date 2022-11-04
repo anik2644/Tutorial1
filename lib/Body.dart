@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled12/bodyFavorite.dart';
 
 import 'package:untitled12/hotel_descriptions/hotel_description.dart';
 import 'package:untitled12/main.dart';
@@ -111,7 +112,9 @@ class _MybodyState extends State<Mybody> {
           actions: [
             IconButton(
               icon: const Icon(Icons.favorite),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => bodyFavorite()));
+              },
             ),
           ],
           bottom: AppBar(
